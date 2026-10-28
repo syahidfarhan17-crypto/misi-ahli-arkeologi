@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refleksi Murid | Misi Ahli Arkeologi Muda</title>
+
+<style>
+:root {
+    --bg: #071426;
+    --card: #10243b;
+    --cyan: #38d9ff;
+    --blue: #168bff;
+    --text: #edf7ff;
+    --muted: #b4c8dc;
+    --gold: #ffd166;
+    --green: #56f0b0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle at top, #12385a, var(--bg) 65%);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.container {
+    width: min(100% - 28px, 850px);
+    margin: auto;
+    padding: 28px 0 45px;
+}
+
+.hero, .panel {
+    background: rgba(16, 36, 59, 0.95);
+    border: 1px solid rgba(56, 217, 255, 0.3);
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.hero {
+    text-align: center;
+    background: linear-gradient(135deg, #12385a, #071426);
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    border-radius: 25px;
+    padding: 5px 13px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero-icon {
+    font-size: 55px;
+    margin-top: 15px;
+}
+
+h1 {
+    color: var(--cyan);
+    font-size: clamp(27px, 5vw, 40px);
+    line-height: 1.2;
+}
+
+h2 {
+    color: var(--cyan);
+    font-size: 21px;
+    margin-top: 0;
+}
+
+p, .description {
+    color: var(--muted);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 15px 0 8px;
+}
+
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #36536f;
+    border-radius: 10px;
+    background: #071426;
+    color: var(--text);
+    font: inherit;
+}
+
+textarea {
+    min-height: 105px;
+    resize: vertical;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px;
+    border: 1px solid #36536f;
+    border-radius: 10px;
+    background: #0a1b2f;
+    cursor: pointer;
+}
+
+.option:has(input:checked) {
+    border-color: var(--cyan);
+    background: #12314b;
+}
+
+.option input {
+    accent-color: var(--cyan);
+}
+
+button {
+    padding: 13px 19px;
+    margin: 7px 5px 7px 0;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    color: #04111f;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+.secondary {
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+}
+
+#result {
+    display: none;
+    background: #0a1b2f;
+    border: 1px solid var(--green);
+    border-radius: 15px;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+#result h2 {
+    color: var(--green);
+}
+
+.result-answer {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    color: var(--text);
+}
+
+.notice {
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    background: rgba(255, 209, 102, 0.07);
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.footer {
+    text-align: center;
+    color: #8fa9c1;
+    font-size: 12px;
+    margin-top: 28px;
+}
+
+@media (max-width: 550px) {
+    .options {
+        grid-template-columns: 1fr;
+    }
+
+    .hero, .panel {
+        padding: 19px;
+    }
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+    <header class="hero">
+        <span class="badge">MISI 09 • REFLEKSI AKHIR</span>
+        <div class="hero-icon">🧭</div>
+        <h1>Refleksi Ahli Arkeologi Muda</h1>
+        <p>
+            Setiap penemuan membawa pengetahuan baharu.
+            Mari fikirkan kembali pengalaman kamu meneroka
+            kehidupan manusia prasejarah!
+        </p>
+    </header>
+
+    <form id="reflectionForm">
+
+        <section class="panel">
+            <h2>👤 1. Maklumat Murid</h2>
+            <label for="studentName">Nama atau nama samaran</label>
+            <input id="studentName" type="text"
+                   placeholder="Masukkan nama atau nama samaran">
+
+            <label for="understanding">Bagaimanakah tahap kefahaman kamu?</label>
+            <select id="understanding" required>
+                <option value="">-- Pilih tahap kefahaman --</option>
+                <option>Sangat faham</option>
+                <option>Faham</option>
+                <option>Agak faham</option>
+                <option>Masih memerlukan bimbingan</option>
+            </select>
+        </section>
+
+        <section class="panel">
+            <h2>🔎 2. Penemuan Paling Menarik</h2>
+            <p class="description">
+                Pilih satu perkara yang paling menarik perhatian kamu.
+            </p>
+
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="discovery"
+                           value="Peralatan batu" required>
+                    🪨 Peralatan batu
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="discovery"
+                           value="Kehidupan manusia prasejarah">
+                    🏕️ Kehidupan manusia
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="discovery"
+                           value="Perkembangan pertanian">
+                    🌾 Perkembangan pertanian
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="discovery"
+                           value="Penemuan artifak">
+                    🏺 Penemuan artifak
+                </label>
+            </div>
+
+            <label for="reason">
+                Mengapakah perkara tersebut menarik minat kamu?
+            </label>
+            <textarea id="reason" required
+                placeholder="Terangkan sebab pilihan kamu..."></textarea>
+        </section>
+
+        <section class="panel">
+            <h2>🧠 3. Apa yang Kamu Pelajari?</h2>
+
+            <label for="newLearning">
+                Nyatakan satu pengetahuan baharu yang kamu peroleh.
+            </label>
+            <textarea id="newLearning" required
+                placeholder="Saya telah mempelajari bahawa..."></textarea>
+
+            <label for="criticalThinking">
+                Mengapakah artifak penting dalam kajian sejarah?
+            </label>
+            <textarea id="criticalThinking" required
+                placeholder="Pada pendapat saya, artifak penting kerana..."></textarea>
+        </section>
+
+        <section class="panel">
+            <h2>⭐ 4. Penilaian Kendiri</h2>
+
+            <label for="confidence">
+                Sejauh manakah keyakinan kamu untuk menerangkan
+                kehidupan manusia prasejarah?
+            </label>
+            <select id="confidence" required>
+                <option value="">-- Pilih jawapan --</option>
+                <option>Sangat yakin</option>
+                <option>Yakin</option>
+                <option>Kurang yakin</option>
+                <option>Belum yakin</option>
+            </select>
+
+            <label for="improvement">
+                Apakah perkara yang ingin kamu pelajari dengan lebih lanjut?
+            </label>
+            <textarea id="improvement"
+                placeholder="Saya ingin mengetahui lebih lanjut tentang..."></textarea>
+        </section>
+
+        <section class="panel">
+            <h2>🏆 5. Tamatkan Refleksi</h2>
+            <p>
+                Semak jawapan kamu sebelum menjana ringkasan refleksi.
+            </p>
+
+            <p class="notice">
+                Aktiviti ini menjana ringkasan pada skrin sahaja.
+                Jawapan tidak dihantar kepada guru dan tidak disimpan
+                ke pangkalan data. Elakkan memasukkan maklumat peribadi sensitif.
+            </p>
+
+            <button type="submit">✨ Jana Ringkasan Refleksi</button>
+            <button type="reset" class="secondary">Padam Jawapan</button>
+
+            <div id="result" aria-live="polite">
+                <h2>🎉 Refleksi Kamu</h2>
+                <div id="resultContent" class="result-answer"></div>
+                <button type="button" onclick="window.print()">
+                    🖨️ Cetak / Simpan PDF
+                </button>
+            </div>
+        </section>
+
+    </form>
+
+    <footer class="footer">
+        MISI AHLI ARKEOLOGI MUDA<br>
+        Pengembaraan ke Zaman Prasejarah
+    </footer>
+
+</main>
+
+<script>
+const form = document.getElementById("reflectionForm");
+const result = document.getElementById("result");
+const resultContent = document.getElementById("resultContent");
+
+function getValue(id) {
+    return document.getElementById(id).value.trim();
+}
+
+function addAnswer(title, value) {
+    const heading = document.createElement("h3");
+    heading.textContent = title;
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = value || "Tidak dinyatakan.";
+
+    resultContent.appendChild(heading);
+    resultContent.appendChild(paragraph);
+}
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const discovery = document.querySelector(
+        'input[name="discovery"]:checked'
+    );
+
+    resultContent.replaceChildren();
+
+    addAnswer("Nama", getValue("studentName") || "Tidak dinyatakan");
+    addAnswer("Tahap kefahaman", getValue("understanding"));
+    addAnswer("Penemuan paling menarik", discovery ? discovery.value : "");
+    addAnswer("Sebab pilihan", getValue("reason"));
+    addAnswer("Pengetahuan baharu", getValue("newLearning"));
+    addAnswer("Kepentingan artifak", getValue("criticalThinking"));
+    addAnswer("Tahap keyakinan", getValue("confidence"));
+    addAnswer("Pembelajaran seterusnya", getValue("improvement"));
+
+    result.style.display = "block";
+    result.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+form.addEventListener("reset", function() {
+    result.style.display = "none";
+    resultContent.replaceChildren();
+});
+</script>
+
+</body>
+</html>
