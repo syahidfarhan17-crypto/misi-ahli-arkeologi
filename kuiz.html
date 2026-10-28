@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aktiviti Interaktif | Misi Ahli Arkeologi Muda</title>
+
+<style>
+:root {
+    --bg: #071426;
+    --card: #10243c;
+    --cyan: #42e8f5;
+    --white: #f3f8ff;
+    --muted: #b7c9df;
+    --green: #4ade80;
+    --red: #fb7185;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 24px 15px;
+    background: var(--bg);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 30px 18px;
+    border: 1px solid rgba(66,232,245,.4);
+    border-radius: 20px;
+    background: linear-gradient(135deg,#102d4d,#071426);
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 13px;
+    border: 1px solid rgba(66,232,245,.4);
+    border-radius: 25px;
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+h1 {
+    color: var(--cyan);
+    font-size: clamp(27px,5vw,40px);
+    line-height: 1.25;
+}
+
+h2 {
+    color: var(--cyan);
+}
+
+p {
+    color: var(--muted);
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.stat {
+    text-align: center;
+    background: var(--card);
+    border: 1px solid #244360;
+    border-radius: 12px;
+    padding: 12px 5px;
+}
+
+.stat strong {
+    display: block;
+    color: var(--cyan);
+    font-size: 24px;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.progress-track {
+    height: 8px;
+    background: #203750;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 18px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--cyan);
+    transition: width .3s;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid #244360;
+    border-radius: 17px;
+    padding: 23px;
+    margin: 18px 0;
+}
+
+.question-label {
+    color: var(--cyan);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.question {
+    color: var(--white);
+    font-size: 19px;
+    font-weight: bold;
+    margin: 12px 0 20px;
+}
+
+.options {
+    display: grid;
+    gap: 10px;
+}
+
+.option {
+    width: 100%;
+    padding: 13px;
+    text-align: left;
+    border: 1px solid #34536f;
+    border-radius: 10px;
+    background: #0a1a2d;
+    color: var(--white);
+    font-size: 15px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.option:hover:not(:disabled) {
+    border-color: var(--cyan);
+    background: #16324d;
+}
+
+.option:focus-visible,
+.action:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+.option:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.option.correct {
+    border-color: var(--green);
+    background: #12372f;
+}
+
+.option.wrong {
+    border-color: var(--red);
+    background: #40202d;
+}
+
+.feedback {
+    display: none;
+    padding: 12px;
+    margin-top: 14px;
+    border-radius: 10px;
+    background: #091a2c;
+}
+
+.feedback.show {
+    display: block;
+}
+
+.feedback.good {
+    border: 1px solid var(--green);
+}
+
+.feedback.bad {
+    border: 1px solid var(--red);
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.feedback.good strong {
+    color: var(--green);
+}
+
+.feedback.bad strong {
+    color: var(--red);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.action {
+    border: 0;
+    border-radius: 10px;
+    padding: 13px 20px;
+    background: var(--cyan);
+    color: #071426;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action:hover {
+    background: #a3f7ff;
+}
+
+.action:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.result {
+    display: none;
+    text-align: center;
+    padding: 26px 18px;
+    margin-top: 20px;
+    border: 1px solid var(--cyan);
+    border-radius: 18px;
+    background: linear-gradient(135deg,#103858,#10243c);
+}
+
+.result.show {
+    display: block;
+}
+
+.final-score {
+    font-size: 48px;
+    color: var(--cyan);
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+@media(max-width:500px) {
+    .dashboard {
+        gap: 6px;
+    }
+
+    .stat strong {
+        font-size: 20px;
+    }
+
+    .card {
+        padding: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+<header class="hero">
+    <span class="badge">MOD UJI MINDA • MISI 07</span>
+
+    <h1>🧠 Aktiviti Interaktif</h1>
+
+    <p>
+        Bersedia, Ahli Arkeologi Muda! Uji pengetahuan anda tentang
+        kehidupan manusia prasejarah. Jawab 10 soalan sebelum masa tamat
+        dan kumpulkan markah untuk memperoleh lencana pencapaian.
+    </p>
+
+    <div class="progress-track">
+        <div class="progress-fill" id="progress"></div>
+    </div>
+</header>
+
+<section class="dashboard" aria-label="Status kuiz">
+    <div class="stat">
+        <strong id="score">0</strong>
+        <span>MARKAH</span>
+    </div>
+
+    <div class="stat">
+        <strong id="questionCount">0/10</strong>
+        <span>SOALAN DIJAWAB</span>
+    </div>
+
+    <div class="stat">
+        <strong id="timer">60</strong>
+        <span>MASA (SAAT)</span>
+    </div>
+</section>
+
+<section class="card" id="startPanel">
+    <h2>🚀 Mulakan Misi</h2>
+    <p>
+        Anda mempunyai 60 saat untuk menjawab 10 soalan.
+        Setiap jawapan betul memperoleh 10 markah. Pilih jawapan
+        yang paling tepat berdasarkan pengetahuan sejarah.
+    </p>
+    <button class="action" id="startButton" type="button">
+        Mula Kuiz
+    </button>
+</section>
+
+<section class="card" id="quizPanel" hidden>
+    <div class="question-label" id="questionLabel">SOALAN 1 DARIPADA 10</div>
+    <div class="question" id="questionText"></div>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+
+    <div class="actions">
+        <button class="action" id="nextButton" type="button" disabled>
+            Soalan Seterusnya →
+        </button>
+    </div>
+</section>
+
+<section class="result" id="resultPanel" aria-live="polite">
+    <h2>🏆 Misi Selesai!</h2>
+    <div class="final-score"><span id="finalScore">0</span>/100</div>
+    <h2 id="badgeTitle">Ahli Arkeologi Muda</h2>
+    <p id="resultMessage"></p>
+    <button class="action" id="retryButton" type="button">
+        🔄 Cuba Semula
+    </button>
+</section>
+
+<p class="footer">
+    Misi Ahli Arkeologi Muda • Teroka, Siasat dan Fahami Sejarah
+</p>
+
+</main>
+
+<script>
+const questions = [
+    {
+        q: "Apakah maksud zaman prasejarah?",
+        options: [
+            "Zaman sebelum manusia mengenali sistem tulisan",
+            "Zaman selepas kemerdekaan",
+            "Zaman penggunaan komputer",
+            "Zaman pembinaan bangunan moden"
+        ],
+        answer: 0,
+        explanation: "Zaman prasejarah merujuk kepada tempoh sebelum wujudnya sistem tulisan yang diketahui bagi masyarakat berkenaan."
+    },
+    {
+        q: "Apakah bahan yang sering digunakan untuk menghasilkan alat pada zaman Paleolitik?",
+        options: [
+            "Plastik",
+            "Batu",
+            "Kaca moden",
+            "Aluminium"
+        ],
+        answer: 1,
+        explanation: "Alat batu merupakan antara tinggalan penting yang membantu ahli arkeologi mengkaji kehidupan manusia Paleolitik."
+    },
+    {
+        q: "Apakah yang dimaksudkan dengan artifak?",
+        options: [
+            "Cerita dongeng semata-mata",
+            "Benda buatan manusia yang mempunyai nilai arkeologi",
+            "Semua benda semula jadi tanpa pengecualian",
+            "Bangunan yang baru dibina"
+        ],
+        answer: 1,
+        explanation: "Artifak ialah objek yang dihasilkan atau diubah suai oleh manusia dan boleh memberikan maklumat tentang kehidupan masa lalu."
+    },
+    {
+        q: "Mengapakah manusia prasejarah menghasilkan alat batu?",
+        options: [
+            "Untuk menggunakan internet",
+            "Untuk membina kenderaan bermotor",
+            "Untuk membantu aktiviti seperti memotong dan memproses bahan",
+            "Untuk mencetak buku"
+        ],
+        answer: 2,
+        explanation: "Alat batu membantu manusia menjalankan pelbagai aktiviti harian, bergantung pada bentuk, bahan dan fungsinya."
+    },
+    {
+        q: "Apakah yang boleh dipelajari melalui lukisan gua?",
+        options: [
+            "Semua perkara tentang kehidupan manusia secara lengkap",
+            "Sebahagian gambaran aktiviti, simbol atau kehidupan masyarakat silam",
+            "Cara menggunakan telefon pintar",
+            "Tarikh tepat setiap peristiwa tanpa kajian"
+        ],
+        answer: 1,
+        explanation: "Lukisan gua boleh memberikan petunjuk tentang aktiviti atau simbol masyarakat silam, tetapi tafsirannya memerlukan penelitian."
+    },
+    {
+        q: "Apakah kepentingan penemuan tulang haiwan di tapak arkeologi?",
+        options: [
+            "Membuktikan semua haiwan telah pupus",
+            "Menentukan warna pakaian manusia dengan tepat",
+            "Memberikan petunjuk tentang pemakanan dan hubungan manusia dengan haiwan",
+            "Membuktikan manusia menggunakan teknologi moden"
+        ],
+        answer: 2,
+        explanation: "Tulang haiwan boleh membantu penyelidik memahami diet, persekitaran dan kegiatan manusia pada masa lalu."
+    },
+    {
+        q: "Apakah perubahan penting apabila manusia mula mengamalkan kehidupan menetap dan bercucuk tanam?",
+        options: [
+            "Masyarakat tidak lagi memerlukan makanan",
+            "Wujud peluang membina penempatan yang lebih kekal",
+            "Semua manusia berpindah ke bandar moden",
+            "Manusia berhenti menghasilkan peralatan"
+        ],
+        answer: 1,
+        explanation: "Kegiatan pertanian menyokong pembentukan penempatan lebih kekal di sesetengah masyarakat, walaupun perubahan ini berlaku secara berbeza mengikut tempat."
+    },
+    {
+        q: "Apakah tugas ahli arkeologi?",
+        options: [
+            "Mencipta bukti supaya cerita menjadi menarik",
+            "Mengubah artifak agar kelihatan baharu",
+            "Menggali, merekod dan menganalisis bukti material masa lalu",
+            "Membuat kesimpulan tanpa penyelidikan"
+        ],
+        answer: 2,
+        explanation: "Ahli arkeologi mengkaji bukti material melalui kaedah yang sistematik untuk membina tafsiran tentang kehidupan masa lalu."
+    },
+    {
+        q: "Anda menemui alat batu dan sisa makanan di satu tapak. Apakah tindakan terbaik?",
+        options: [
+            "Membuat kesimpulan daripada satu objek sahaja",
+            "Membuang sisa makanan kerana tidak penting",
+            "Membandingkan bukti dan meneliti konteks penemuan",
+            "Mereka cerita tanpa pemeriksaan"
+        ],
+        answer: 2,
+        explanation: "Kesimpulan yang kukuh memerlukan penelitian pelbagai bukti serta konteks tempat artifak ditemukan."
+    },
+    {
+        q: "Mengapakah artifak perlu dipelihara?",
+        options: [
+            "Supaya bukti sejarah kekal untuk kajian dan generasi akan datang",
+            "Supaya semua artifak boleh dijual",
+            "Supaya artifak boleh diubah sesuka hati",
+            "Supaya maklumat sejarah dilupakan"
+        ],
+        answer: 0,
+        explanation: "Pemeliharaan artifak membantu melindungi warisan dan membolehkan penyelidikan serta pembelajaran diteruskan."
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let timeLeft = 60;
+let timerInterval = null;
+let answered = false;
+let quizStarted = false;
+
+const startPanel = document.getElementById("startPanel");
+const quizPanel = document.getElementById("quizPanel");
+const resultPanel = document.getElementById("resultPanel");
+const startButton = document.getElementById("startButton");
+const nextButton = document.getElementById("nextButton");
+const retryButton = document.getElementById("retryButton");
+
+function startQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    timeLeft = 60;
+    answered = false;
+    quizStarted = true;
+
+    clearInterval(timerInterval);
+
+    startPanel.hidden = true;
+    resultPanel.classList.remove("show");
+    quizPanel.hidden = false;
+
+    updateDashboard();
+    showQuestion();
+
+    timerInterval = setInterval(function() {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            finishQuiz(true);
+        }
+    }, 1000);
+}
+
+function showQuestion() {
+    if (!quizStarted) return;
+
+    const item = questions[currentQuestion];
+
+    answered = false;
+    document.getElementById("questionLabel").textContent =
+        "SOALAN " + (currentQuestion + 1) + " DARIPADA " + questions.length;
+
+    document.getElementById("questionText").textContent = item.q;
+
+    const optionsContainer = document.getElementById("options");
+    optionsContainer.innerHTML = "";
+
+    item.options.forEach(function(optionText, index) {
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "option";
+        button.textContent = String.fromCharCode(65 + index) + ". " + optionText;
+
+        button.addEventListener("click", function() {
+            chooseAnswer(index, button);
+        });
+
+        optionsContainer.appendChild(button);
+    });
+
+    const feedback = document.getElementById("feedback");
+    feedback.className = "feedback";
+    feedback.textContent = "";
+
+    nextButton.disabled = true;
+    nextButton.textContent =
+        currentQuestion === questions.length - 1
+            ? "Lihat Keputusan 🏆"
+            : "Soalan Seterusnya →";
+
+    updateDashboard();
+}
+
+function chooseAnswer(selectedIndex, selectedButton) {
+    if (answered || !quizStarted) return;
+
+    answered = true;
+
+    const item = questions[currentQuestion];
+    const optionButtons = document.querySelectorAll(".option");
+    const feedback = document.getElementById("feedback");
+
+    optionButtons.forEach(function(button) {
+        button.disabled = true;
+    });
+
+    if (selectedIndex === item.answer) {
+        score += 10;
+        selectedButton.classList.add("correct");
+        feedback.className = "feedback show good";
+        feedback.innerHTML = "<strong>✅ Betul! +10 markah</strong>";
+    } else {
+        selectedButton.classList.add("wrong");
+        optionButtons[item.answer].classList.add("correct");
+        feedback.className = "feedback show bad";
+        feedback.innerHTML = "<strong>❌ Belum tepat.</strong>";
+    }
+
+    const explanation = document.createElement("p");
+    explanation.textContent = item.explanation;
+    feedback.appendChild(explanation);
+
+    nextButton.disabled = false;
+    updateDashboard();
+}
+
+function updateDashboard() {
+    document.getElementById("score").textContent = score;
+    document.getElementById("questionCount").textContent =
+        currentQuestion + (answered ? 1 : 0) + "/" + questions.length;
+
+    document.getElementById("timer").textContent = timeLeft;
+
+    const progress = answered
+        ? (currentQuestion + 1) / questions.length * 100
+        : currentQuestion / questions.length * 100;
+
+    document.getElementById("progress").style.width = progress + "%";
+}
+
+function finishQuiz(timeUp) {
+    if (!quizStarted) return;
+
+    quizStarted = false;
+    clearInterval(timerInterval);
+
+    quizPanel.hidden = true;
+    resultPanel.classList.add("show");
+
+    document.getElementById("finalScore").textContent = score;
+
+    let title;
+    let message;
+
+    if (score >= 90) {
+        title = "🏆 Ahli Arkeologi Pakar";
+        message = "Cemerlang! Anda menunjukkan penguasaan yang sangat baik.";
+    } else if (score >= 70) {
+        title = "🥇 Ahli Arkeologi Mahir";
+        message = "Bagus! Anda mempunyai asas pengetahuan yang kukuh.";
+    } else if (score >= 50) {
+        title = "🔎 Ahli Arkeologi Penyiasat";
+        message = "Usaha yang baik! Teruskan meneroka dan belajar.";
+    } else {
+        title = "🌱 Ahli Arkeologi Junior";
+        message = "Jangan berputus asa. Ulang kaji bahan pembelajaran dan cuba lagi.";
+    }
+
+    document.getElementById("badgeTitle").textContent = title;
+
+    document.getElementById("resultMessage").textContent = timeUp
+        ? "Masa telah tamat. " + message
+        : "Anda telah menjawab semua soalan. " + message;
+
+    document.getElementById("progress").style.width =
+        (currentQuestion + (answered ? 1 : 0)) / questions.length * 100 + "%";
+}
+
+nextButton.addEventListener("click", function() {
+    if (!answered || !quizStarted) return;
+
+    if (currentQuestion === questions.length - 1) {
+        finishQuiz(false);
+    } else {
+        currentQuestion++;
+        showQuestion();
+    }
+});
+
+startButton.addEventListener("click", startQuiz);
+retryButton.addEventListener("click", startQuiz);
+
+</script>
+
+</body>
+</html>
