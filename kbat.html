@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cabaran KBAT | Misi Ahli Arkeologi Muda</title>
+
+<style>
+:root {
+    --bg: #071426;
+    --card: #10243c;
+    --cyan: #42e8f5;
+    --blue: #168bff;
+    --white: #f3f8ff;
+    --muted: #b7c9df;
+    --green: #4ade80;
+    --red: #fb7185;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 25px 16px;
+    background: var(--bg);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 35px 20px;
+    border: 1px solid rgba(66,232,245,0.4);
+    border-radius: 22px;
+    background: linear-gradient(135deg, #102d4d, #071426);
+    box-shadow: 0 0 25px rgba(66,232,245,0.08);
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 30px;
+    color: var(--cyan);
+    background: rgba(66,232,245,0.1);
+    border: 1px solid rgba(66,232,245,0.35);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+h1 {
+    margin: 15px 0 10px;
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.25;
+    color: var(--cyan);
+}
+
+h2 {
+    color: var(--cyan);
+    font-size: 23px;
+}
+
+p {
+    color: var(--muted);
+}
+
+.intro {
+    max-width: 700px;
+    margin: auto;
+}
+
+.status-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.status-box {
+    text-align: center;
+    background: var(--card);
+    padding: 16px 8px;
+    border-radius: 14px;
+    border: 1px solid #244360;
+}
+
+.status-box strong {
+    display: block;
+    font-size: 25px;
+    color: var(--cyan);
+}
+
+.status-box span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.challenge {
+    background: var(--card);
+    border: 1px solid #244360;
+    border-radius: 18px;
+    padding: 23px;
+    margin: 20px 0;
+}
+
+.challenge-number {
+    color: var(--cyan);
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.question {
+    color: var(--white);
+    font-size: 18px;
+    font-weight: bold;
+    margin: 12px 0 18px;
+}
+
+.evidence {
+    background: #091a2c;
+    border-left: 4px solid var(--cyan);
+    border-radius: 8px;
+    padding: 14px;
+    margin: 15px 0;
+    color: var(--muted);
+}
+
+.options {
+    display: grid;
+    gap: 10px;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 14px;
+    border: 1px solid #34536f;
+    border-radius: 10px;
+    background: #0a1a2d;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1.5;
+    transition: 0.2s;
+}
+
+.option:hover:not(:disabled) {
+    border-color: var(--cyan);
+    background: #132e49;
+}
+
+.option:focus-visible,
+button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+.option.correct {
+    border-color: var(--green);
+    background: rgba(74,222,128,0.12);
+}
+
+.option.wrong {
+    border-color: var(--red);
+    background: rgba(251,113,133,0.12);
+}
+
+.option:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.feedback {
+    display: none;
+    margin-top: 15px;
+    padding: 13px;
+    border-radius: 10px;
+    background: #091a2c;
+}
+
+.feedback.show {
+    display: block;
+}
+
+.feedback.good {
+    border: 1px solid var(--green);
+}
+
+.feedback.bad {
+    border: 1px solid var(--red);
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.feedback.good strong {
+    color: var(--green);
+}
+
+.feedback.bad strong {
+    color: var(--red);
+}
+
+.finish-panel {
+    text-align: center;
+    background: linear-gradient(135deg, #103858, #10243c);
+    border: 1px solid var(--cyan);
+    border-radius: 20px;
+    padding: 28px 20px;
+    margin-top: 25px;
+}
+
+.final-score {
+    color: var(--cyan);
+    font-size: 48px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+button.action {
+    border: 0;
+    border-radius: 10px;
+    padding: 13px 22px;
+    margin-top: 12px;
+    background: var(--cyan);
+    color: #071426;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button.action:hover {
+    background: #a3f7ff;
+}
+
+button.action:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.progress-track {
+    height: 8px;
+    border-radius: 10px;
+    background: #203750;
+    overflow: hidden;
+    margin-top: 18px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--cyan);
+    transition: width 0.3s;
+}
+
+.footer-note {
+    text-align: center;
+    font-size: 12px;
+    margin: 25px 0 5px;
+}
+
+@media (max-width: 550px) {
+    .status-panel {
+        gap: 7px;
+    }
+
+    .status-box {
+        padding: 12px 4px;
+    }
+
+    .status-box strong {
+        font-size: 21px;
+    }
+
+    .challenge {
+        padding: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+    <header class="hero">
+        <span class="badge">MOD PENYIASATAN • TAHAP KBAT</span>
+
+        <h1>🧠 Cabaran KBAT</h1>
+
+        <p class="intro">
+            Selamat datang, Ahli Arkeologi Muda! Gunakan bukti,
+            pemikiran kritis dan kemahiran menyelesaikan masalah
+            untuk membongkar rahsia kehidupan manusia prasejarah.
+        </p>
+
+        <div class="progress-track" aria-label="Kemajuan cabaran">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </header>
+
+    <section class="status-panel" aria-label="Status permainan">
+        <div class="status-box">
+            <strong id="score">0</strong>
+            <span>MARKAH</span>
+        </div>
+
+        <div class="status-box">
+            <strong id="completed">0/3</strong>
+            <span>CABARAN SELESAI</span>
+        </div>
+
+        <div class="status-box">
+            <strong id="rank">Novis</strong>
+            <span>TAHAP PENYIASAT</span>
+        </div>
+    </section>
+
+    <!-- CABARAN 1 -->
+    <section class="challenge" id="challenge1">
+        <div class="challenge-number">CABARAN 01 • ANALISIS BUKTI</div>
+
+        <h2>🔎 Misteri Alat Batu</h2>
+
+        <div class="evidence">
+            <strong>BUKTI ARKEOLOGI</strong><br>
+            Ahli arkeologi menemui sejenis alat batu yang mempunyai
+            hujung tajam dan permukaan yang menunjukkan kesan hentakan.
+            Alat itu ditemukan berhampiran kawasan yang pernah didiami
+            manusia prasejarah.
+        </div>
+
+        <p class="question">
+            Apakah kesimpulan paling munasabah berdasarkan bukti tersebut?
+        </p>
+
+        <div class="options">
+            <button class="option" data-question="1" data-answer="A">
+                A. Alat tersebut mungkin digunakan untuk memotong atau
+                memproses bahan tertentu.
+            </button>
+
+            <button class="option" data-question="1" data-answer="B">
+                B. Alat tersebut membuktikan manusia prasejarah sudah
+                menggunakan mesin elektrik.
+            </button>
+
+            <button class="option" data-question="1" data-answer="C">
+                C. Alat tersebut membuktikan semua manusia prasejarah
+                tinggal di kawasan yang sama.
+            </button>
+        </div>
+
+        <div class="feedback" id="feedback1" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- CABARAN 2 -->
+    <section class="challenge" id="challenge2">
+        <div class="challenge-number">CABARAN 02 • INTERPRETASI</div>
+
+        <h2>🏺 Fungsi Artifak</h2>
+
+        <div class="evidence">
+            <strong>BUKTI ARKEOLOGI</strong><br>
+            Sebuah bekas tembikar ditemukan bersama sisa makanan
+            di kawasan penempatan prasejarah. Bentuk bekas itu
+            mempunyai ruang yang boleh menampung bahan.
+        </div>
+
+        <p class="question">
+            Apakah tafsiran yang paling wajar dibuat oleh penyiasat?
+        </p>
+
+        <div class="options">
+            <button class="option" data-question="2" data-answer="A">
+                A. Bekas itu semestinya digunakan untuk menyimpan emas.
+            </button>
+
+            <button class="option" data-question="2" data-answer="B">
+                B. Bekas itu mungkin digunakan untuk menyimpan atau
+                menyediakan makanan, tetapi bukti tambahan diperlukan.
+            </button>
+
+            <button class="option" data-question="2" data-answer="C">
+                C. Bekas itu membuktikan manusia prasejarah mempunyai
+                teknologi komunikasi digital.
+            </button>
+        </div>
+
+        <div class="feedback" id="feedback2" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- CABARAN 3 -->
+    <section class="challenge" id="challenge3">
+        <div class="challenge-number">CABARAN 03 • PENYELESAIAN MASALAH</div>
+
+        <h2>🧩 Jejak Kehidupan Silam</h2>
+
+        <div class="evidence">
+            <strong>SITUASI PENYIASATAN</strong><br>
+            Dua kawasan penemuan mempunyai artifak yang berbeza.
+            Kawasan pertama mengandungi banyak alat batu, manakala
+            kawasan kedua mempunyai sisa makanan dan tulang haiwan.
+        </div>
+
+        <p class="question">
+            Apakah tindakan terbaik untuk membina penjelasan sejarah
+            yang lebih kukuh?
+        </p>
+
+        <div class="options">
+            <button class="option" data-question="3" data-answer="A">
+                A. Membuat kesimpulan berdasarkan satu artifak sahaja.
+            </button>
+
+            <button class="option" data-question="3" data-answer="B">
+                B. Memilih tafsiran yang paling menarik tanpa menyemak bukti.
+            </button>
+
+            <button class="option" data-question="3" data-answer="C">
+                C. Membandingkan pelbagai bukti, meneliti konteks penemuan
+                dan mempertimbangkan penjelasan alternatif.
+            </button>
+        </div>
+
+        <div class="feedback" id="feedback3" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- KEPUTUSAN -->
+    <section class="finish-panel" id="finishPanel" aria-live="polite">
+        <h2>🏆 Keputusan Misi</h2>
+
+        <p id="finishMessage">
+            Selesaikan ketiga-tiga cabaran untuk mengetahui keputusan anda!
+        </p>
+
+        <div class="final-score">
+            <span id="finalScore">0</span>/30
+        </div>
+
+        <p id="finalRank">Teruskan penyiasatan anda!</p>
+
+        <button class="action" id="retryButton" type="button">
+            🔄 Cuba Semula
+        </button>
+    </section>
+
+    <p class="footer-note">
+        Misi Ahli Arkeologi Muda • Belajar Sejarah Melalui Bukti
+    </p>
+
+</main>
+
+<script>
+const answers = {
+    1: {
+        correct: "A",
+        explanation:
+            "Bentuk hujung yang tajam dan kesan hentakan menyokong kemungkinan alat itu digunakan untuk memotong atau memproses bahan. Walau bagaimanapun, fungsi sebenar perlu ditentukan melalui penelitian lanjut."
+    },
+    2: {
+        correct: "B",
+        explanation:
+            "Bentuk bekas dan penemuan sisa makanan menyokong tafsiran bahawa tembikar mungkin digunakan untuk menyimpan atau menyediakan makanan. Ahli arkeologi perlu meneliti konteks dan bukti tambahan sebelum membuat kesimpulan."
+    },
+    3: {
+        correct: "C",
+        explanation:
+            "Perbandingan pelbagai bukti dan penelitian konteks membantu mengurangkan kesimpulan yang terburu-buru. Ahli arkeologi juga perlu mempertimbangkan tafsiran alternatif berdasarkan bukti yang tersedia."
+    }
+};
+
+let score = 0;
+let completedQuestions = new Set();
+
+const pointsPerQuestion = 10;
+
+function updateDashboard() {
+    document.getElementById("score").textContent = score;
+    document.getElementById("completed").textContent =
+        completedQuestions.size + "/3";
+
+    document.getElementById("progressFill").style.width =
+        (completedQuestions.size / 3 * 100) + "%";
+
+    let rank = "Novis";
+
+    if (score >= 30) {
+        rank = "Pakar";
+    } else if (score >= 20) {
+        rank = "Mahir";
+    } else if (score >= 10) {
+        rank = "Penyiasat";
+    }
+
+    document.getElementById("rank").textContent = rank;
+
+    if (completedQuestions.size === 3) {
+        showFinalResult();
+    }
+}
+
+function showFinalResult() {
+    const finalScore = document.getElementById("finalScore");
+    const finishMessage = document.getElementById("finishMessage");
+    const finalRank = document.getElementById("finalRank");
+
+    finalScore.textContent = score;
+
+    if (score === 30) {
+        finishMessage.textContent =
+            "Hebat! Anda berjaya menjawab semua cabaran dengan tepat.";
+        finalRank.textContent =
+            "🏆 Tahniah, anda ialah Ahli Arkeologi Pakar!";
+    } else if (score === 20) {
+        finishMessage.textContent =
+            "Bagus! Anda menunjukkan kemahiran analisis yang baik.";
+        finalRank.textContent =
+            "🥈 Anda berada pada tahap Ahli Arkeologi Mahir.";
+    } else if (score === 10) {
+        finishMessage.textContent =
+            "Usaha yang baik! Teruskan latihan untuk mengukuhkan pemikiran kritis.";
+        finalRank.textContent =
+            "🔍 Anda ialah Ahli Arkeologi Penyiasat.";
+    } else {
+        finishMessage.textContent =
+            "Jangan berputus asa. Gunakan maklum balas untuk memahami bukti dengan lebih baik.";
+        finalRank.textContent =
+            "📚 Teruskan usaha, Ahli Arkeologi Muda!";
+    }
+}
+
+document.querySelectorAll(".option").forEach(function(button) {
+    button.addEventListener("click", function() {
+        const questionNumber = Number(this.dataset.question);
+
+        if (completedQuestions.has(questionNumber)) {
+            return;
+        }
+
+        const selectedAnswer = this.dataset.answer;
+        const question = answers[questionNumber];
+        const feedback = document.getElementById(
+            "feedback" + questionNumber
+        );
+
+        const allOptions = document.querySelectorAll(
+            '.option[data-question="' + questionNumber + '"]'
+        );
+
+        allOptions.forEach(function(option) {
+            option.disabled = true;
+
+            if (option.dataset.answer === question.correct) {
+                option.classList.add("correct");
+            }
+        });
+
+        completedQuestions.add(questionNumber);
+
+        if (selectedAnswer === question.correct) {
+            score += pointsPerQuestion;
+
+            feedback.className = "feedback show good";
+            feedback.innerHTML =
+                "<strong>✅ Jawapan tepat! +10 markah</strong>" +
+                question.explanation;
+        } else {
+            this.classList.add("wrong");
+
+            feedback.className = "feedback show bad";
+            feedback.innerHTML =
+                "<strong>❌ Belum tepat. +0 markah</strong>" +
+                "Jawapan yang betul telah ditandakan. " +
+                question.explanation;
+        }
+
+        updateDashboard();
+    });
+});
+
+document.getElementById("retryButton").addEventListener("click", function() {
+    score = 0;
+    completedQuestions.clear();
+
+    document.querySelectorAll(".option").forEach(function(button) {
+        button.disabled = false;
+        button.classList.remove("correct", "wrong");
+    });
+
+    document.querySelectorAll(".feedback").forEach(function(feedback) {
+        feedback.className = "feedback";
+        feedback.textContent = "";
+    });
+
+    document.getElementById("finishMessage").textContent =
+        "Selesaikan ketiga-tiga cabaran untuk mengetahui keputusan anda!";
+
+    document.getElementById("finalScore").textContent = "0";
+    document.getElementById("finalRank").textContent =
+        "Teruskan penyiasatan anda!";
+
+    updateDashboard();
+
+    document.getElementById("challenge1").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+
+updateDashboard();
+</script>
+
+</body>
+</html>
