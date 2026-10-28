@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeri Artifak | Misi Ahli Arkeologi Muda</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #071426;
+    color: #edf7ff;
+    line-height: 1.7;
+    padding: 24px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.hero {
+    background: linear-gradient(135deg, #102c4c, #075985);
+    border: 1px solid #22d3ee;
+    border-radius: 22px;
+    padding: 32px;
+    margin-bottom: 30px;
+}
+
+.label {
+    display: inline-block;
+    background: #103951;
+    color: #67e8f9;
+    border: 1px solid #22d3ee;
+    border-radius: 20px;
+    padding: 5px 13px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+h2 {
+    color: #67e8f9;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+h3 {
+    color: #a5f3fc;
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #d4e5f5;
+    margin-bottom: 12px;
+}
+
+.section {
+    margin: 30px 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #0d2037;
+    border: 1px solid #1e4968;
+    border-radius: 16px;
+    padding: 22px;
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #22d3ee;
+    box-shadow: 0 8px 25px rgba(34, 211, 238, 0.12);
+}
+
+.icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    display: inline-block;
+    color: #67e8f9;
+    background: #102f48;
+    border-radius: 8px;
+    padding: 3px 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.button {
+    display: inline-block;
+    background: transparent;
+    color: #67e8f9;
+    border: 1px solid #22d3ee;
+    border-radius: 22px;
+    padding: 9px 16px;
+    margin-top: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.button:hover {
+    background: #164e63;
+}
+
+.highlight {
+    background: #102b42;
+    border-left: 4px solid #22d3ee;
+    border-radius: 12px;
+    padding: 22px;
+    margin: 28px 0;
+}
+
+.mission {
+    background: linear-gradient(135deg, #0d2037, #103951);
+    border: 1px solid #22d3ee;
+    border-radius: 18px;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.question {
+    background: #0d2037;
+    border: 1px dashed #22d3ee;
+    border-radius: 14px;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    color: #91a9bf;
+    font-size: 13px;
+    padding: 30px 0 10px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 14px;
+    }
+
+    .hero {
+        padding: 23px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <section class="hero">
+        <span class="label">MODUL 04 • GALERI ARTIFAK</span>
+        <h1>🏺 Galeri Artifak Prasejarah</h1>
+        <h3>Tinggalan masa lalu, cerita untuk hari ini</h3>
+        <p>
+            Selamat datang ke galeri artifak! Di sini, kamu akan
+            meneroka tinggalan manusia prasejarah dan menyiasat
+            bagaimana setiap penemuan memberikan petunjuk tentang
+            kehidupan, kemahiran dan persekitaran manusia dahulu.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>🔎 Jenis Artifak Prasejarah</h2>
+        <p>
+            Kenali beberapa jenis tinggalan yang boleh dikaji oleh
+            ahli arkeologi. Setiap penemuan mempunyai ciri dan
+            nilai bukti yang tersendiri.
+        </p>
+
+        <div class="cards">
+
+            <article class="card">
+                <div class="icon">🪨</div>
+                <span class="tag">ARTIFAK 01</span>
+                <h3>Peralatan Batu</h3>
+                <p>
+                    Peralatan batu membantu penyelidik memahami
+                    teknologi dan kegiatan manusia dahulu. Bentuk
+                    dan kesan penggunaannya boleh memberikan petunjuk
+                    tentang fungsi alat tersebut.
+                </p>
+                <a class="button" href="#misi">Kaji Artifak →</a>
+            </article>
+
+            <article class="card">
+                <div class="icon">🏺</div>
+                <span class="tag">ARTIFAK 02</span>
+                <h3>Tembikar</h3>
+                <p>
+                    Serpihan tembikar boleh memberikan maklumat
+                    tentang kemahiran membuat bekas, teknologi
+                    pembuatan dan kehidupan masyarakat pada
+                    zaman dahulu.
+                </p>
+                <a class="button" href="#misi">Kaji Artifak →</a>
+            </article>
+
+            <article class="card">
+                <div class="icon">🦴</div>
+                <span class="tag">TINGGALAN 03</span>
+                <h3>Tulang dan Fosil</h3>
+                <p>
+                    Tulang haiwan dan fosil boleh membantu penyelidik
+                    mengkaji hidupan, diet serta perubahan persekitaran.
+                    Namun, tidak semua tulang ialah fosil.
+                </p>
+                <a class="button" href="#misi">Kaji Tinggalan →</a>
+            </article>
+
+            <article class="card">
+                <div class="icon">🎨</div>
+                <span class="tag">TINGGALAN 04</span>
+                <h3>Lukisan Gua</h3>
+                <p>
+                    Lukisan pada dinding gua memberikan petunjuk
+                    tentang gambaran kehidupan, haiwan dan ekspresi
+                    manusia. Tafsirannya perlu dibuat dengan
+                    berhati-hati berdasarkan bukti.
+                </p>
+                <a class="button" href="#misi">Kaji Tinggalan →</a>
+            </article>
+
+            <article class="card">
+                <div class="icon">⚒️</div>
+                <span class="tag">ARTIFAK 05</span>
+                <h3>Peralatan Logam</h3>
+                <p>
+                    Peralatan daripada logam seperti gangsa atau besi
+                    menunjukkan kemahiran teknologi dan pertukangan
+                    yang berkembang dalam masyarakat tertentu.
+                </p>
+                <a class="button" href="#misi">Kaji Artifak →</a>
+            </article>
+
+            <article class="card">
+                <div class="icon">💍</div>
+                <span class="tag">TINGGALAN 06</span>
+                <h3>Barang Perhiasan</h3>
+                <p>
+                    Manik dan barang perhiasan boleh membantu
+                    penyelidik memahami kemahiran membuat barangan,
+                    amalan budaya dan hubungan antara masyarakat.
+                </p>
+                <a class="button" href="#misi">Kaji Tinggalan →</a>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="highlight">
+        <h2>💡 Tahukah Kamu?</h2>
+        <p>
+            Artifak bukan sekadar barang lama. Artifak ialah objek
+            yang berkaitan dengan kegiatan manusia dan boleh dikaji
+            untuk memahami kehidupan masa lampau.
+        </p>
+        <p>
+            Ahli arkeologi turut meneliti lokasi penemuan, lapisan
+            tanah dan hubungannya dengan bukti lain. Maklumat ini
+            membantu mereka menghasilkan tafsiran yang lebih kukuh.
+        </p>
+    </section>
+
+    <section class="mission" id="misi">
+        <h2>🕵️ Misi Detektif Artifak</h2>
+        <p>
+            Sekarang, kamu ialah seorang Ahli Arkeologi Muda!
+            Pilih satu jenis artifak yang telah kamu pelajari
+            dan jalankan penyiasatan berdasarkan bukti.
+        </p>
+
+        <div class="cards">
+
+            <article class="card">
+                <h3>🔍 Langkah 1: Perhatikan</h3>
+                <p>
+                    Apakah bentuk, saiz, bahan dan ciri yang dapat
+                    kamu lihat pada artifak tersebut?
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>🧠 Langkah 2: Analisis</h3>
+                <p>
+                    Apakah fungsi artifak itu? Apakah bukti yang
+                    menyokong andaian kamu?
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>📝 Langkah 3: Buat Kesimpulan</h3>
+                <p>
+                    Apakah yang dapat kamu simpulkan tentang
+                    kehidupan manusia berdasarkan penemuan itu?
+                </p>
+            </article>
+
+        </div>
+
+        <div class="question">
+            <h3>🎯 Cabaran Kamu</h3>
+            <p>
+                Kamu menemui satu alat batu di sebuah tapak arkeologi.
+                Alat itu mempunyai bahagian yang tajam. Bolehkah kamu
+                terus menyimpulkan bahawa alat tersebut digunakan
+                untuk memburu?
+            </p>
+            <p>
+                <strong>Fikirkan:</strong> Apakah bukti tambahan yang
+                perlu dikumpulkan sebelum membuat kesimpulan?
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>🌟 Mengapa Artifak Penting?</h2>
+
+        <div class="cards">
+
+            <article class="card">
+                <h3>📖 Sumber Sejarah</h3>
+                <p>
+                    Artifak memberikan bukti material untuk membantu
+                    penyelidik memahami kehidupan manusia masa lampau.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>🧩 Membina Pengetahuan</h3>
+                <p>
+                    Perbandingan antara artifak membantu kita
+                    mengenal pasti persamaan, perbezaan dan
+                    perubahan dalam kehidupan manusia.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>🏛️ Memelihara Warisan</h3>
+                <p>
+                    Penemuan arkeologi perlu dipelihara supaya
+                    nilainya sebagai sumber ilmu dan warisan
+                    dapat dihargai oleh generasi akan datang.
+                </p>
+            </article>
+
+        </div>
+    </section>
+
+    <footer>
+        Misi Ahli Arkeologi Muda • Galeri Artifak
+        <br>
+        Teroka bukti, fahami masa lalu, hargai warisan.
+    </footer>
+
+</div>
+</body>
+</html>
