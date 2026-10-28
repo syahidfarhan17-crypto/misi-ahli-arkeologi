@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pusat Pengetahuan | Misi Ahli Arkeologi Muda</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #071426;
+    color: #edf7ff;
+    line-height: 1.7;
+    padding: 25px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.hero {
+    background: linear-gradient(135deg, #102c4c, #075985);
+    border: 1px solid #22d3ee;
+    border-radius: 22px;
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.12);
+}
+
+.label {
+    display: inline-block;
+    background: rgba(34, 211, 238, 0.15);
+    color: #67e8f9;
+    border: 1px solid #22d3ee;
+    border-radius: 20px;
+    padding: 5px 13px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: clamp(27px, 5vw, 42px);
+    line-height: 1.25;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+h2 {
+    color: #67e8f9;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+h3 {
+    color: #a5f3fc;
+    margin-bottom: 8px;
+    font-size: 19px;
+}
+
+p {
+    color: #d4e5f5;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    margin: 35px 0 18px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #0d2037;
+    border: 1px solid #1e4968;
+    border-radius: 16px;
+    padding: 22px;
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #22d3ee;
+    box-shadow: 0 8px 25px rgba(34, 211, 238, 0.1);
+}
+
+.icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    display: inline-block;
+    color: #67e8f9;
+    background: #102f48;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    background: #102b42;
+    border-left: 4px solid #22d3ee;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.timeline {
+    display: grid;
+    gap: 15px;
+}
+
+.period {
+    display: grid;
+    grid-template-columns: 65px 1fr;
+    gap: 15px;
+    align-items: start;
+    background: #0d2037;
+    border: 1px solid #1e4968;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.period-icon {
+    font-size: 32px;
+    text-align: center;
+}
+
+ul {
+    padding-left: 20px;
+    color: #d4e5f5;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+.question {
+    background: #102b42;
+    border: 1px dashed #22d3ee;
+    border-radius: 15px;
+    padding: 22px;
+    margin-top: 30px;
+}
+
+footer {
+    text-align: center;
+    color: #91a9bf;
+    font-size: 13px;
+    padding: 30px 0 10px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .hero {
+        padding: 24px;
+    }
+
+    .period {
+        grid-template-columns: 1fr;
+    }
+
+    .period-icon {
+        text-align: left;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <section class="hero">
+        <span class="label">PUSAT PENGETAHUAN • MODUL 03</span>
+        <h1>🔎 Menjelajah Dunia Zaman Prasejarah</h1>
+        <p>
+            Selamat datang, Ahli Arkeologi Muda! Di pusat pengetahuan ini,
+            kamu akan menyiasat kehidupan manusia pada zaman prasejarah,
+            mengenali perubahan cara hidup dan memahami kepentingan
+            tinggalan sejarah.
+        </p>
+    </section>
+
+    <section>
+        <h2>📚 Apakah Zaman Prasejarah?</h2>
+        <p>
+            Zaman prasejarah ialah zaman sebelum manusia mengenal sistem
+            tulisan. Kehidupan manusia pada zaman ini diketahui melalui
+            kajian terhadap bukti arkeologi seperti peralatan batu,
+            tembikar, tulang, lukisan gua dan tapak petempatan.
+        </p>
+        <p>
+            Ahli arkeologi mengkaji bukti tersebut untuk membina
+            pemahaman tentang cara manusia mendapatkan makanan,
+            menghasilkan peralatan, membina tempat tinggal serta
+            menyesuaikan diri dengan persekitaran.
+        </p>
+    </section>
+
+    <div class="highlight">
+        <h3>🧭 Misi Kamu</h3>
+        <p>
+            Bayangkan kamu seorang ahli arkeologi. Setiap artifak ialah
+            petunjuk, setiap tapak penemuan ialah lokasi penyiasatan dan
+            setiap bukti membantu kita memahami kehidupan manusia dahulu.
+            Ingat, kesimpulan sejarah perlu dibuat berdasarkan bukti,
+            bukan andaian semata-mata.
+        </p>
+    </div>
+
+    <section>
+        <h2 class="section-title">⏳ Kenali Tempoh Zaman Prasejarah</h2>
+
+        <div class="timeline">
+
+            <article class="period">
+                <div class="period-icon">🪨</div>
+                <div>
+                    <span class="tag">PERINGKAT 01</span>
+                    <h3>Zaman Paleolitik</h3>
+                    <p>
+                        Manusia menggunakan peralatan batu yang ringkas
+                        dan bergantung pada sumber alam untuk meneruskan
+                        kehidupan.
+                    </p>
+                    <ul>
+                        <li>Menggunakan peralatan daripada batu.</li>
+                        <li>Memburu haiwan dan mengumpulkan hasil tumbuhan.</li>
+                        <li>Berpindah-randah untuk mendapatkan sumber makanan.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="period">
+                <div class="period-icon">🌿</div>
+                <div>
+                    <span class="tag">PERINGKAT 02</span>
+                    <h3>Zaman Mesolitik</h3>
+                    <p>
+                        Dalam pembahagian prasejarah yang menggunakan
+                        istilah ini, manusia meneruskan kegiatan memburu
+                        dan mengumpulkan makanan serta menyesuaikan
+                        kehidupan dengan persekitaran.
+                    </p>
+                    <ul>
+                        <li>Menggunakan peralatan batu yang lebih kecil di sesetengah kawasan.</li>
+                        <li>Memanfaatkan sumber makanan dari darat dan air.</li>
+                        <li>Cara hidup berbeza mengikut kawasan dan keadaan alam.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="period">
+                <div class="period-icon">🌾</div>
+                <div>
+                    <span class="tag">PERINGKAT 03</span>
+                    <h3>Zaman Neolitik</h3>
+                    <p>
+                        Perubahan penting berlaku apabila sesetengah
+                        masyarakat mula mengusahakan pertanian dan
+                        membentuk petempatan yang lebih tetap.
+                    </p>
+                    <ul>
+                        <li>Menjalankan kegiatan pertanian dan penternakan di sesetengah kawasan.</li>
+                        <li>Menghasilkan peralatan batu yang lebih halus.</li>
+                        <li>Mengembangkan kegiatan membuat tembikar dan kehidupan bermasyarakat.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="period">
+                <div class="period-icon">⚒️</div>
+                <div>
+                    <span class="tag">PERINGKAT 04</span>
+                    <h3>Zaman Logam</h3>
+                    <p>
+                        Manusia di sesetengah kawasan mula menggunakan
+                        logam untuk menghasilkan peralatan dan barangan
+                        yang memenuhi keperluan kehidupan.
+                    </p>
+                    <ul>
+                        <li>Menghasilkan peralatan daripada logam seperti gangsa atau besi.</li>
+                        <li>Mengembangkan kemahiran pertukangan.</li>
+                        <li>Memperlihatkan perubahan dalam kegiatan ekonomi dan kehidupan sosial.</li>
+                    </ul>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">🏺 Apakah Bukti Arkeologi?</h2>
+
+        <div class="cards">
+
+            <article class="card">
+                <div class="icon">🪨</div>
+                <h3>Peralatan Batu</h3>
+                <p>
+                    Membantu penyelidik memahami teknologi serta kegiatan
+                    harian manusia pada masa lampau.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="icon">🏺</div>
+                <h3>Tembikar</h3>
+                <p>
+                    Memberikan petunjuk tentang kemahiran membuat barangan,
+                    penyimpanan makanan dan kehidupan masyarakat.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="icon">🦴</div>
+                <h3>Tulang dan Sisa</h3>
+                <p>
+                    Boleh membantu kajian tentang diet, haiwan dan
+                    persekitaran manusia pada zaman dahulu.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="icon">🖐️</div>
+                <h3>Lukisan Gua</h3>
+                <p>
+                    Berpotensi memberikan maklumat tentang gambaran,
+                    aktiviti dan ekspresi manusia prasejarah.
+                </p>
+            </article>
+
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">🧠 Mengapa Kita Perlu Mempelajari Prasejarah?</h2>
+
+        <div class="cards">
+
+            <article class="card">
+                <h3>01. Memahami Perubahan</h3>
+                <p>
+                    Kita dapat meneliti bagaimana teknologi dan cara
+                    hidup manusia berubah dari semasa ke semasa.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>02. Menghargai Warisan</h3>
+                <p>
+                    Tinggalan arkeologi membantu kita mengenali
+                    sejarah manusia dan menghargai warisan masa lampau.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>03. Berfikir Secara Kritis</h3>
+                <p>
+                    Kita belajar membuat tafsiran berdasarkan bukti,
+                    membandingkan maklumat dan menilai kesimpulan.
+                </p>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="question">
+        <h2>🎯 Soalan Penyiasatan</h2>
+        <p>
+            Bayangkan kamu menemui sebatang alat batu di sebuah tapak
+            arkeologi. Apakah maklumat yang boleh kamu peroleh daripada
+            penemuan tersebut?
+        </p>
+        <p>
+            <strong>Petunjuk:</strong> Fikirkan bahan alat itu, bentuknya,
+            cara alat tersebut mungkin digunakan dan bukti lain yang
+            diperlukan sebelum membuat kesimpulan.
+        </p>
+    </section>
+
+    <footer>
+        Misi Ahli Arkeologi Muda • Pusat Pengetahuan
+        <br>
+        Teroka bukti, fahami masa lalu, hargai warisan.
+    </footer>
+
+</div>
+</body>
+</html>
